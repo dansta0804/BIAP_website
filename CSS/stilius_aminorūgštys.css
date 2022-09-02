@@ -1,0 +1,196 @@
+	* {
+		box-sizing: border-box;
+	}
+
+	html{
+		background-color: rgb(31,5,23);
+		margin: 0;
+		color: white;
+		
+	}
+
+	.header_image_aminoacid {
+ 		background-image: url("../Nuotraukos/amino_acids.svg");
+		height: 30px;
+		padding: 50px;
+		background-position: center;
+		border: 1px solid rgb(33,5,24);
+		background-size: cover;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 0px;	
+	}
+	
+	
+	.menu_bar {
+  		overflow: hidden;
+		background-color: rgb(72,13,54);
+		border-top-left-radius: 0px;
+		border-top-right-radius: 0px;
+		border-bottom-left-radius: 20px;
+		border-bottom-right-radius: 20px;
+		border: 1px solid rgb(33,5,24);
+		color: black;
+		font-size: 110%;
+		font-weight: bold;
+		padding: 5px;
+		text-align: center;
+	}
+	
+	.menu_bar a {
+		width: 200px;
+		margin: 0 auto;
+  		color: #f2f2f2;
+  		padding: 30px;
+  		text-decoration: none;
+		border-color: white;
+	}
+
+	.menu_bar a:hover {
+		width: 200px;
+		margin: 0 auto;
+		background-color: rgb(212,120,183);
+		color: black;
+		font-weight: bold;
+	}
+
+	.header_aminoacid_text {
+ 		text-align: center;
+  		position: absolute;
+  		top: 0%;
+  		left: 50%;
+  		transform: translate(-50%, 0%);
+		color: white;
+		font-size: 140%;
+		font-weight: bold;
+	}
+	
+	.aminoacid_info_block {
+		background-color: rgb(255,208,255);
+		padding: 5px 10px;
+		text-align: center;
+		color: black;
+		font-size: 110%;
+		border: 1px solid rgb(33,5,24);
+		background-size: cover;
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+		border-bottom-width: 20px;
+		border-bottom-color: rgb(31,5,23);
+		
+	}
+
+	.aminoacids {
+		position: relative;
+		width: 100%;
+	}
+
+	.aminoacids .but {
+		background-color: rgb(107,19,81);
+		border: 1px solid rgb(33,5,24);
+		color: white;
+		font-weight: bold;
+		text-align: left;
+		margin: auto;
+		width: 100%;
+		padding: 10px;
+		cursor: pointer;
+		display: block;
+	}
+
+	.aminoacids .but:hover {
+		background-color: rgb(101,26,101);
+	}	
+	
+	.aminoacid_options {
+		float: left;
+		width: 290px;
+		background: rgb(255,208,255);
+		padding: 20px;
+		border-color: rgb(33,5,24);
+		border-style: solid none solid solid;
+		border-width: 1px;
+		background-size: cover;
+	}
+
+	.about_aminoacids {
+		float: right;
+		padding: 5px;
+		width: 76%;
+		border-width: 1px;
+		border-color: rgb(33,5,24);
+		border-style: solid;
+		background-color: rgb(255,208,255);
+		color: black;
+		font-weight: normal;
+		text-align: justify;
+		text-indent: 30px;
+		padding: 30px;
+	}
+
+	.headings {
+		text-align: left;
+		text-indent: 0px;
+	}
+
+	section::after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+/************************************STYLES FOR AMINOACID TABLES********************************************/
+	
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+
+	.first_column {
+		background-color: rgb(112,76,112);
+	}
+
+	.second_column {
+		background-color: rgb(255,235,255);
+	}
+
+	tr {
+		border: 1px solid black;
+	}
+
+	.col1_style{
+		color: white;
+		padding: 5px;
+		width: 50%;
+		font-size: 17px;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.col2_style{
+		color: black;
+		padding: 5px;
+		width: 50%;
+		font-size: 17px;
+		font-weight: bold; 
+		text-align: center;
+	}
+
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	@media only screen and (max-width:800px) {
+		.about_aminoacids {
+			width: 100%;
+		}
+	}
+	
+	@media only screen and (max-width:800px) {
+		.aminoacid_options {
+			width: 100%;
+		}
+	}

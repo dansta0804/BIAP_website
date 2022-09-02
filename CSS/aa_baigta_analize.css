@@ -1,0 +1,46 @@
+BODY {
+	background: url("../Nuotraukos/wallpaper2.jpg");
+	height: 100%;
+	background-position: center;
+	background-size: cover;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	width: 60%;
+	text-align: center;
+}
+
+th {
+	background-color: rgb(149,149,255);
+	color: rgb(5,16,53);
+	font-weight: bold;
+	font-size: larger;
+	padding: 1px;
+}
+
+td {
+	color: black;
+    word-wrap: break-word;
+	max-width: 60px;
+	padding: 10px;
+}
+
+table, th, td {
+	border: 0.3px solid black;
+	border-collapse: collapse;
+}
+
+.col_1 {
+	background-color: rgb(214,211,252);
+	font-weight: bold;
+	font-size: large;
+}
+
+.col_2 {
+	background-color: white;
+}
+
+

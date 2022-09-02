@@ -1,0 +1,51 @@
+html {
+	height: 100%;
+	margin: 0;
+}
+
+.wallpaper_style {
+	background-image: url("../Nuotraukos/error.png");
+	height: 100%;
+	background-position: center;
+	background-size: cover;
+	background-repeat: repeat-x;
+	
+}
+
+.text_style {
+	font-size: larger;
+	color: red;
+}
+
+p {
+	font-weight: bolder;
+	font-size: 120px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+}
+
+.a_color {
+	color: white;
+	background-color: rgb(255,82,82);
+	border: 1px solid rgb(158,0,0);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -330%);
+	padding: 14px 25px;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bolder;
+}
+
+a:hover {
+  background-color: rgb(158,0,0);
+}
+
+
