@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<link rel="stylesheet" href="http://localhost/BIAP/CSS stiliai/stilius_seku_analize.css">
+		<link rel="stylesheet" href="http://localhost/BIAP/CSS/stilius_seku_analize.css">
         <title>Sekų analizė</title>
 	</head>
 	
@@ -21,7 +21,6 @@
 			<a href="aa_analize.html">Pradėti aminorūgščių sekos analizę</a>
 			<a href="curl_naudojimas.html"><i>curl</i> panaudojimas</a>
 		</div>
-
 		<section>
 			<div class="about_analysis_text">
 				<p>Kiekvienas naudotojas, atvėręs BIAP puslapį ir turėdamas informaciją, kurią nori išanalizuoti, gali atlikti sekų (nukleotidų arba aminorūgščių) analizę, pasinaudoję šioje dalyje aprašomu įrankiu.</p>
@@ -29,42 +28,38 @@
 				<p><b><i>1) Nukleotidų sekos;</i></b></p>
 				<p><b><i>2) Aminorūgščių sekos.</i></b></p>
 				<p>Kokius rezultatus galima gauti, atlikus šias analizes, yra apibūdinta dešinėje pusėje pateiktoje lentelėje.</p>
-			
-			<div class="table_style">
-			<table>
-				<div class="tr_style">
-				<tr>
-					<th><div class="tooltip">Nukleotidų sekos<span class="tooltiptext">Pvz., ACGGATTATCGAT...</span></div></th>
-					<th><div class="tooltip">Aminorūgščių sekos<span class="tooltiptext">Pvz., GYSWQERVMPLKD...</span></div></th>
-				</tr>
+				<div class="table_style">
+					<table>
+						<div class="tr_style">
+							<tr>
+								<th><div class="tooltip">Nukleotidų sekos<span class="tooltiptext">Pvz., ACGGATTATCGAT...</span></div></th>
+								<th><div class="tooltip">Aminorūgščių sekos<span class="tooltiptext">Pvz., GYSWQERVMPLKD...</span></div></th>
+							</tr>
+						</div>
+						<tr>
+							<td><div class="tooltip_to_left">Komplementari seka<span class="tooltiptext_to_left">Pateikiamos dvi sekos: įvesties nukleotidų seka ir jai komplementari seka.</span></div></td>
+							<td>Dažniausiai pasikartojančios aminorūgštys</td>
+						</tr>
+						<tr>
+							<td><div class="tooltip_to_left">Transliacijos produktas<span class="tooltiptext_to_left">Programa sugeneruoja iRNR seką, pagal kurią sukuria peptidų seką.</span></div></td>
+							<td><div class="tooltip_to_right">Nefiltruota GOR metodo prognozė<span class="tooltiptext_to_right">Programa nurodo, koks yra kiekvienos aminorūgšties dažnis bei kokios aminorūgštys pasikartoja dažniausiai.</span></div></td>
+						</tr>
+						<tr>
+							<td><div class="tooltip_to_left">A, T, G, C skaičius<span class="tooltiptext_to_left">Programa analizuoja seką ir apskaičiuoja, koks kiekis skirtingų nukleotidų sudaro seką.</span></div></td>
+							<td><div class="tooltip_to_right">Spėjama antrinė struktūra<span class="tooltiptext_to_right">Programa pritaiko GOR algoritmą, pagal kurį spėja sekos antrinę struktūrą.</span></div></td>
+						</tr>
+						<tr>
+							<td><div class="tooltip_to_left">Sekos ilgis<span class="tooltiptext_to_left">Programa apskaičiuoja, kiek nukleotidų sudaro seką. Taip pat nurodoma, koks yra kiekvieno nukleotido dažnis.</span></div></td>
+							<td><div class="tooltip_to_right">Sekos ilgis<span class="tooltiptext_to_right">Programa apskaičiuoja, kiek aminorūgščių sudaro seką.</span></div></td>
+						</tr>
+						<tr>
+							<td><div class="tooltip_to_left">Molinė masė<span class="tooltiptext_to_left">Pagal žinomas nukleotidų molines mases programa apskaičiuoja visos nukleotidų sekos molinę masę.</span></div></td>
+							<td><div class="tooltip_to_right">Molinė masė<span class="tooltiptext_to_right">Pagal žinomas aminorūgščių molines mases programa apskaičiuoja visos nukleotidų sekos molinę masę.</span></div></td>
+						</tr>
+					</table>
 				</div>
-				<tr>
-					<td><div class="tooltip_to_left">Komplementari seka<span class="tooltiptext_to_left">Pateikiamos dvi sekos: įvesties nukleotidų seka ir jai komplementari seka.</span></div></td>
-					<td>Dažniausiai pasikartojančios aminorūgštys</td>
-				</tr>
-				<tr>
-					<td><div class="tooltip_to_left">Transliacijos produktas<span class="tooltiptext_to_left">Programa sugeneruoja iRNR seką, pagal kurią sukuria peptidų seką.</span></div></td>
-					<td><div class="tooltip_to_right">Nefiltruota GOR metodo prognozė<span class="tooltiptext_to_right">Programa nurodo, koks yra kiekvienos aminorūgšties dažnis bei kokios aminorūgštys pasikartoja dažniausiai.</span></div></td>
-				</tr>
-				<tr>
-					<td><div class="tooltip_to_left">A, T, G, C skaičius<span class="tooltiptext_to_left">Programa analizuoja seką ir apskaičiuoja, koks kiekis skirtingų nukleotidų sudaro seką.</span></div></td>
-					<td><div class="tooltip_to_right">Spėjama antrinė struktūra<span class="tooltiptext_to_right">Programa pritaiko GOR algoritmą, pagal kurį spėja sekos antrinę struktūrą.</span></div></td>
-				</tr>
-				<tr>
-					<td><div class="tooltip_to_left">Sekos ilgis<span class="tooltiptext_to_left">Programa apskaičiuoja, kiek nukleotidų sudaro seką. Taip pat nurodoma, koks yra kiekvieno nukleotido dažnis.</span></div></td>
-					<td><div class="tooltip_to_right">Sekos ilgis<span class="tooltiptext_to_right">Programa apskaičiuoja, kiek aminorūgščių sudaro seką.</span></div></td>
-				</tr>
-				<tr>
-					<td><div class="tooltip_to_left">Molinė masė<span class="tooltiptext_to_left">Pagal žinomas nukleotidų molines mases programa apskaičiuoja visos nukleotidų sekos molinę masę.</span></div></td>
-					<td><div class="tooltip_to_right">Molinė masė<span class="tooltiptext_to_right">Pagal žinomas aminorūgščių molines mases programa apskaičiuoja visos nukleotidų sekos molinę masę.</span></div></td>
-				</tr>
-			</table>
-			</div>
 			</div>
 		</section>
 		<p></p>
-		
-		
 	</body>
 </html>
-

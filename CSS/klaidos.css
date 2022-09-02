@@ -4,12 +4,11 @@ html {
 }
 
 .wallpaper_style {
-	background-image: url("../Nuotraukos/error.png");
+	background-image: url("http://localhost/BIAP/Images/error.png");
 	height: 100%;
 	background-position: center;
 	background-size: cover;
 	background-repeat: repeat-x;
-	
 }
 
 .text_style {
@@ -47,5 +46,3 @@ p {
 a:hover {
   background-color: rgb(158,0,0);
 }
-
-

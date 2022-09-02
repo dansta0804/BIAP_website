@@ -1,5 +1,5 @@
 BODY {
-	background: url("../Nuotraukos/wallpaper.jpg");
+	background: url("http://localhost/BIAP/Images/wallpaper.jpg");
 	height: 100%;
 	background-position: center;
 	background-size: cover;
@@ -42,5 +42,3 @@ table, th, td {
 .col_2 {
 	background-color: white;
 }
-
-

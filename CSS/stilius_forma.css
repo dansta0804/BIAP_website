@@ -4,7 +4,7 @@ body, html {
 }
 
 .wallpaper_style {
-	background-image: url("../Nuotraukos/wallpaper_form.png");
+	background-image: url("http://localhost/BIAP/Images/wallpaper_form.png");
 	height: 220%;
 	background-position: center;
 	background-size: cover;
