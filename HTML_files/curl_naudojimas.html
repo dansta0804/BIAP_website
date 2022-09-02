@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="http://localhost/BIAP/CSS stiliai/stilius_curl.css">
+        <title>Curl</title>
+	</head>
+	<body>
+		<div class="wallpaper_style">
+		<div class="menu_bar">
+			<a href="tinklalapis.html">Pagrindinis puslapis</a>
+			<a href="aminorūgštys.html">Aminorūgštys</a>
+			<a href="genetiniai_kodai.html">Genetiniai kodai</a>
+			<a href="seku_analize.html">Sekos analizė</a>
+			<a href="mokymai_forma.html">MOKYMAI</a>
+		</div>
+			<div class="frame">
+				<p class="main_title">Komandinės eilutės įrankio <i>curl</i> panaudojimas</p>
+				<p><b><i>BIAP</i></b> puslapyje galima analizuoti dviejų tipų sekas: nukleotidų ir aminorūgščių.
+				Šių sekų analizę galima atlikti ne tik pasinaudojus naršykle, bet ir naudojantis Linux operacinės sistemos komandine eilute.
+				Komandinėje eilutėje galima pasinaudoti <i>curl</i> įrankiu, kuris yra naršyklėje vaizduojamos formos įvesties atitikmuo komandinėje eilutėje.</p>
+				<p class="titles">Nukleotidų sekos įvesties pavyzdžiai su <i>curl</i></p>
+				<p>Atliekant nukleotidų sekos analizę naudotojui reikia nurodyti tik analizuojamą seką:</p>
+				<p class="curl_code">1) curl http://127.0.0.1/cgi-bin/perform_analysis_nt.pl --data seka=ATGC</p>
+				<p>● Čia <i><b>127.0.0.1</b></i> gali būti pakeistas į <i><b>localhost</b></i>. Šie žymėjimai nurodo kelią: <i><b>/var/www/html</b></i>.<br>
+				● <i><b>perform_analysis_nt.pl</b></i> yra programos, atliekančios nukleotidų sekos analizę, pavadinimas.<br>
+				● Opcija <i><b>--data</b></i> nurodo, kad po jos einančios reikšmės yra siunčiamos programai, kuri yra nurodyta.<br>
+				● <i><b>seka</b></i> nurodo formos įvesties lauko <i><b>textarea</b></i> pavadinimą, kuris yra tarsi kintamojo vardas, kuriam yra priskiriama reikšmė (šiuo atveju tai yra <i><b>ATGC</b></i> seka). 
+				<i>Perl</i> programa pagal nurodytą kintamojo pavadinimą ir jo reikšmę atlieka analizę.</p>
+				
+				<p>Komandinėje eilutėje galima įvesti sekas, turinčias tik didžiąsias raides, tik mažąsias raides arba turinčias ir didžiąsias, ir mažąsias raides.</p>
+				<p class="curl_code">2) curl http://127.0.0.1/cgi-bin/perform_analysis_nt.pl --data seka=atgc</p>
+				<p class="curl_code">3) curl http://127.0.0.1/cgi-bin/perform_analysis_nt.pl --data seka=aTGc</p>
+				
+				<p>Įvykdžius programą bus matomas <i><b>html</b></i> failo kodas, kuriame bus pavaizduoti gauti rezultatai arba nurodyta, kad esama klaidų ir kokios jos.</p>
+				
+				<p class="titles">Aminorūgščių sekos įvesties pavyzdžiai su <i>curl</i></p>
+				<p>Atliekant aminorūgščių sekos analizę naudotojui reikia nurodyti tik analizuojamą seką:</p>
+				<p class="curl_code">1) curl http://127.0.0.1/cgi-bin/perform_analysis_aa.pl --data seka=TYQWEERTPLIMMMNVGFFR</p>
+				<p>● Čia <i><b>perform_analysis_aa.pl</b></i> yra programos, atliekančios aminorūgščių sekos analizę, pavadinimas.<br>
+				● Programa skiriasi nuo ankstesnės programos tik savo įvestimi.<br>
+				
+				● Opcija <i><b>--data</b></i> nurodo, kad po jos einančios reikšmės yra siunčiamos programai, kuri yra nurodyta.<br>
+				● <i><b>seka</b></i> nurodo formos įvesties lauko <i><b>textarea</b></i> pavadinimą, kuris yra tarsi kintamojo vardas, kuriam yra priskiriama reikšmė (šiuo atveju tai yra <i><b>TYQWEERTPLIMMMNVGFFR</b></i> seka). 
+				<i>Perl</i> programa pagal nurodytą kintamojo pavadinimą ir jo reikšmę atlieka analizę.</p>
+				
+				<p>Komandinėje eilutėje galima įvesti sekas, turinčias tik didžiąsias raides, tik mažąsias raides arba turinčias ir didžiąsias, ir mažąsias raides.</p>
+				<p class="curl_code">2) curl http://127.0.0.1/cgi-bin/perform_analysis_aa.pl --data seka=tyqweertplimmmnvgffr</p>
+				<p class="curl_code">3) curl http://127.0.0.1/cgi-bin/perform_analysis_aa.pl --data seka=TyqwEErtpLimmMvGFfr</p>
+				
+				<p>Įvykdžius programą bus matomas <i><b>html</b></i> failo kodas, kuriame bus pavaizduoti gauti rezultatai arba nurodyta, kad esama klaidų ir kokios jos.</p>
+				
+				<p class="titles">Mokymų registracijos patvirtinimas su <i>curl</i></p>
+				<p>Naudotojai gali užsiregistruoti į mokymus, įvesdami savo kontaktinę informaciją. Kai registracijos forma yra pateikiama, naudotojams 
+				yra grąžinamas išvesties tekstas su įvesta informacija.</p>
+				<p>Šiuo atveju įrankiui <i><b>curl</b></i> informacija yra pateikiama kitaip:</p>
+				<p class="curl_code">curl -d "vardas=Name&pavardė=Surname&pašto_adresas=name.surname%40gmail.com&person=Mokinys&mok_pavad=Vytauto+Didžiojo+gimnazija&klasės=12+klasė" http://localhost/cgi-bin/send_reminder.pl</p>
+				<p>● Čia opcija <i><b>-d</b></i> nurodo, kad po jos einančios vertės yra programai pateikiamos reikšmės, kurias programa atitinkamai panaudoja, generuodama išvesties tekstą.<br>
+				● Prieš lygybės ženklą einantys žodžiai yra parametrai, turintys priskirtas konkrečias reikšmes (reikšmės po lygybės ženklo), kurias programa gali sėkmingai apdoroti.<br>
+				● Kadangi šiuo atveju programai yra perduodama ne viena reikšmė, skirtingos reikšmės yra sujungiamos specialiu '＆' simboliu.</p>
+				
+				<p>Įvykdžius programą bus matomas <i><b>html</b></i> failo kodas, kuriame bus pavaizduotas išvesties tekstas.</p>
+			</div>
+		</div>
+	</body>
+</html>
+

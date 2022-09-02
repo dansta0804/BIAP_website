@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="http://localhost/BIAP/CSS stiliai/stilius_forma.css">
+        <title>Forma</title>
+	</head>
+	
+	<body>
+		<div class="wallpaper_style">
+			<div class="menu_bar">
+				<a href="tinklalapis.html">Pagrindinis puslapis</a>
+				<a href="aminorūgštys.html">Aminorūgštys</a>
+				<a href="genetiniai_kodai.html">Genetiniai kodai</a>
+				<a href="seku_analize.html">Sekos analizė</a>
+			</div>
+			<div class="menu_bar_2">
+				<a href="mokymai.html">»»» Sužinoti daugiau apie mokymus «««</a>
+			</div>
+			<div class="frame">
+				<div class="label_style_not_options">
+					<form action="http://localhost/BIAP/cgi-bin/send_reminder.pl">
+						<label for="vardas">Vardas:</label><br>
+						<input type="text" id="vardas" name="vardas" placeholder="Įrašykite vardą..."><br>
+						<label for="pavardė">Pavardė:</label><br>
+						<input type="text" id="pavardė" name="pavardė" placeholder="Įrašykite pavardę..."><br>
+						<label for="pašto_adresas">Pašto adresas:</label><br>
+						<input type="text" id="pašto_adresas" name="pašto_adresas" placeholder="Įrašykite el. pašto adresą..."><br>
+						<label for="mokinys_mokytojas">Aš esu:</label><br>
+				</div>
+						<div class="radio_text">
+							<input type="radio" id="mokinys" name="person" value="Mokinys">
+  							<label for="mokinys">Mokinys</label><br>
+							<input type="radio" id="studentas" name="person" value="Studentas">
+  							<label for="studentas">Studentas</label><br>
+							<input type="radio" id="mokytojas" name="person" value="Mokytojas">
+ 							<label for="mokytojas">Mokytojas</label><br>
+						</div>
+						<div class="label_style_not_options">
+							<label for="mok_pavad">Mokslo įstaiga:</label>
+							<input type="text" id="mok_pavad" name="mok_pavad" placeholder="Įrašykite mokslo įstaigos pavadinimą..."><br>
+							<label for="klasės">Nurodykite, kurioje klasėje mokotės:</label>
+							<select id="klasė" name="klasės">
+								<option value="8 klasė">8 klasė</option>
+								<option value="9 klasė">9 klasė</option>
+								<option value="10 klasė">10 klasė</option>
+								<option value="11 klasė">11 klasė</option>
+								<option value="12 klasė">12 klasė</option>
+							</select>
+							<label for="mok_dalykas"><br>Nurodykite, kokį dalyką mokote:</label>
+							<select id="mok_dalykas" name="mok_dalykai" form="mok_dalykų_forma">
+								<option>Biologija</option>
+								<option>Chemija</option>
+								<option>Fizika</option>
+								<option>Informacinės technologijos</option>
+								<option>Matematika</option>
+							</select>
+							<label for="mok_dalykas"><br>Pasirinkite dominančią temą:</label><br>
+						</div>
+						<select id="temos" name="temos" form="temų_forma">
+							<option>1. Transkripcijos ir transliacijos procesai</option>
+							<option>2. Genų mutacijos ir ligos</option>
+							<option>3. DNR, RNR sandara</option>
+							<option>4. Nukleosomų sandara</option>
+							<option>5. Genų inžinerija</option>
+							<option>6. Fermentų veikimo principas</option>
+							<option>7. Baltymų struktūros</option>
+							<option>8. Baltymų 3D struktūros analizavimo įrankiai</option>
+							<option>9. Mitochondrijų genomas</option>
+							<option>10. Viduląstelinis kvėpavimas</option>
+							<option>11. Fotosintezė</option>
+							<option>12. Sekų analizės bioinformatikiniai įrankiai</option>
+							<option>13. Pažintis su duomenų bazėmis</option>
+							<option>14. Blast programos apžvalga ir pritaikymas</option>
+							<option>15. Filogenetinių medžių kūrimas</option>
+							<option>16. Geneologinių medžių braižymas paveldimų ligų nustatymui</option>
+						</select>
+						<div class="label_style_not_options">
+							<label for="teksto_laukas">Nurodykite, su kokias dalykais norėtumėte supažindinti mokinius, jei tam turėtumėte reikalingas priemones:</label><br>
+							<textarea placeholder="Įrašykite tekstą..."></textarea>
+						</div>
+						<input type="checkbox" id="sutikimas1" name="sutikimas1">
+						<label class="topic_style" for="sutikimas1">Patvirtinu, kad aukščiau įvesta informacija yra teisinga.</label><br>
+						<input type="checkbox" id="sutikimas2" name="sutikimas2">
+						<label class="topic_style" for="sutikimas2">Sutinku gauti naujienas į savo el. paštą.</label><br>
+						<input type="checkbox" id="sutikimas3" name="sutikimas3">
+						<label class="topic_style" for="sutikimas3">Sutinku dalyvauti mokymuose.</label><br>
+						<input type="submit" value="Pateikti">
+					</form>
+			</div>
+		</div>	
+	</body>
+</html>
+
