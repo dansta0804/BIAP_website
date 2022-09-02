@@ -539,7 +539,7 @@ print <<ENDHTML;
 <HTML>
 	<HEAD>
 		<TITLE>CGI Test</TITLE>
-		<link rel="stylesheet" href="http://localhost/BIAP/CSS stiliai/aa_baigta_analize.css">
+		<link rel="stylesheet" href="http://localhost/BIAP/CSS/aa_baigta_analize.css">
 		<style>
 			.menu_bar {
 				overflow: hidden;
@@ -578,12 +578,12 @@ print <<ENDHTML;
 	</HEAD>
 	<BODY>
 		<div class="menu_bar">
-			<a href="http://localhost/BIAP/HTML failai/tinklalapis.html">Pagrindinis puslapis</a>
-			<a href="http://localhost/BIAP/HTML failai/aminorūgštys.html">Aminorūgštys</a>
-			<a href="http://localhost/BIAP/HTML failai/genetiniai_kodai.html">Genetiniai kodai</a>
-			<a href="http://localhost/BIAP/HTML failai/seku_analize.html">Sekos analizė</a>
-			<a href="http://localhost/BIAP/HTML failai/mokymai_forma.html">MOKYMAI</a>
-			<a href="http://localhost/BIAP/HTML failai/aa_analize.html">Grįžti</a>
+			<a href="http://localhost/BIAP/HTML_files/tinklalapis.html">Pagrindinis puslapis</a>
+			<a href="http://localhost/BIAP/HTML_files/aminorūgštys.html">Aminorūgštys</a>
+			<a href="http://localhost/BIAP/HTML_files/genetiniai_kodai.html">Genetiniai kodai</a>
+			<a href="http://localhost/BIAP/HTML_files/seku_analize.html">Sekos analizė</a>
+			<a href="http://localhost/BIAP/HTML_files/mokymai_forma.html">MOKYMAI</a>
+			<a href="http://localhost/BIAP/HTML_files/aa_analize.html">Grįžti</a>
 		</div>
 		<table>
 			<tr>
