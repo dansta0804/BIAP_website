@@ -7,4 +7,4 @@ of the sequences (e.g. predicting secondary structure and etc.), and provide bio
 
 **Directory descriptions:**
 
-**CSS/** - 
+- **CSS/**
