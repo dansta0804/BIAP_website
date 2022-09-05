@@ -9,59 +9,46 @@ my $final_seq;
 my $mismatch;
 
 sub check_sequence ( $@ ) {
-	
 	my $seq_given = shift ( @_ );
 	my $seq_checked;
 	
-	if ( $seq_given eq "Aptikta neteisingų simbolių!" || $seq_given eq "Seka nepateikta!") {
+	if ( $seq_given eq "Aptikta neteisingų simbolių!" ||
+			$seq_given eq "Seka nepateikta!") {
 		$seq_checked = $seq_given;
 	}
-	
-	elsif ( $seq_given =~ /^([ACGTacgt]+)$/ ) {
-		$seq_checked = $seq_given;
-	}
+	elsif ( $seq_given =~ /^([ACGTacgt]+)$/ ) { $seq_checked = $seq_given; }
 	
 	return $seq_checked;
-	
 }
 
 
 sub find_length ( $@ ) {
-	
 	my $seq = shift ( @_ );
 	my $seq_length;
 	
 	if ( $seq eq "Seka nepateikta!" || $seq !~ /^([ACGTacgt]+)$/ ) {
 		$seq_length = "Negalima apskaičiuoti!";
 	}
-	
-	else {	$seq_length = length( $seq ); }
+	else { $seq_length = length( $seq ); }
 	
 	return $seq_length;
-	
 }
 
 sub count_mass ( $@ ) {
-	
 	my $seq = shift ( @_ );
-
 	my %nt_masses = ( 
 		'A' => 135.13, 'T' => 126.11, 'G' => 151.13, 'C' => 111.1,
 		'a' => 135.13, 't' => 126.11, 'g' => 151.13, 'c' => 111.1
 	);
-	
 	my $seq_total_mass = 0;
 	
 	if ( $seq =~ /^([ACGTacgt]+)$/ ) {	
-	
 		my @split_seq = split( '', $seq );
 
 		for ( my $at = 0; $at < scalar @split_seq; $at++ ) {
-	
 			my $nt_mass = $nt_masses{ $split_seq[ $at ] };
 			$seq_total_mass = $seq_total_mass + $nt_mass . " g/mol";	
 		}
-	
 	}
 	
 	elsif ( $seq ne "Seka nepateikta!" || $seq !~ /^([ACGTacgt]+)$/ ) {
@@ -69,11 +56,9 @@ sub count_mass ( $@ ) {
 	}
 	
 	return $seq_total_mass;
-
 }
 
 sub determine_nt_count ( $@ ) {
-	
 	my $nt_seq = shift ( @_ );
 	$nt_seq = uc ( $nt_seq );
 	
@@ -93,35 +78,27 @@ sub determine_nt_count ( $@ ) {
 	}
 	
 	elsif ( $nt_seq =~ /^([ACGTacgt]+)$/ ) {
-		
 		my @split_nts = split ( '', $nt_seq );
 	
 		for ( my $iter = 0; $iter < scalar @split_nts; $iter++ ) {
-		
 			if ( $split_nts [ $iter ] eq 'A' ) { $nt_A = $nt_A + 1; }
 			elsif ( $split_nts [ $iter ] eq 'T' ) { $nt_T = $nt_T + 1; }
 			elsif ( $split_nts [ $iter ] eq 'G' ) { $nt_G = $nt_G + 1; }
 			elsif ( $split_nts [ $iter ] eq 'C' ) { $nt_C = $nt_C + 1; }
-		
 		}
 	
 		push ( @nt_count_arr, "A = $nt_A", "T = $nt_T", "G = $nt_G", "C = $nt_C" );
-	
 		$nt_count_jnt = join ( ', ', @nt_count_arr );
 	}
 	
 	return $nt_count_jnt;
-	
 }
 
 sub find_complement ( $@ ) {
-	
 	my $seq = shift ( @_ );
 	my $jnt_seq;
 	
-	if ( $seq eq "Seka nepateikta!" ) { 
-		$jnt_seq = "Negalima nustatyti!";
-	}
+	if ( $seq eq "Seka nepateikta!" ) { $jnt_seq = "Negalima nustatyti!"; }
 	
 	elsif ( $seq !~ /^([ACGTacgt]+)$/ ) {
 		$jnt_seq = "Aptikta neteisingų simbolių!";
@@ -132,26 +109,20 @@ sub find_complement ( $@ ) {
 			'a' => 't', 't' => 'a', 'g' => 'c', 'c' => 'g'
 		);
 		my @seq_compl = ();
-	
 		my @split_seq = split( '', $seq );
 		
 		for ( my $at = 0; $at < scalar @split_seq; $at++ ) {
-	
 			my $base = $base_match{ $split_seq[ $at ] };
 			push ( @seq_compl, $base );
-		
 		}
 	
 		$jnt_seq = join ( '', @seq_compl );
-		
 	}
 	
 	return $jnt_seq;
-	
 }
 
 sub determine_translation_product ( $@ ) {
-	
 	my %translation_table = (
 				"TTA" => 'L', "TTG" => 'L', "CTT" => 'L',
 				"CTC" => 'L', "CTA" => 'L', "CTG" => 'L',
@@ -194,23 +165,19 @@ sub determine_translation_product ( $@ ) {
 	
 	elsif ( $seq =~ /^([ACGTacgt]+)$/ ) {
 		for ( my $cut_at = 0; $cut_at < length ( $sequence ); $cut_at += 3 ) {
-				
 			my $triplet = substr ( $sequence, $cut_at, 3 );
 			
-			if ( $triplet =~ /^([acgt]+)$/ ) { 
-				$triplet_check = uc( $1 );
-			}
+			if ( $triplet =~ /^([acgt]+)$/ ) { $triplet_check = uc( $1 ); }
 			
 			elsif ( $triplet =~ /^([ACGTacgt]+)$/ ) { 
 				$triplet_check = uc( $1 );
 			}
+
 			else { $triplet_check = $triplet; }
 			push ( @triplet_array, $triplet_check );
-				
 		}
 	
 		for my $iter ( @triplet_array ) {
-		
 			if ( length ( $triplet_array[ $iter ] ) < 3 ) { next; }
 		
 			else {
@@ -220,21 +187,13 @@ sub determine_translation_product ( $@ ) {
 		}
 	
 		$translation_product = join ( '', @amino_acid_array );
-		
 	}
 	
 	return $translation_product;
-	
 }
 
-if ( $sequence =~ /^([ACGTacgt]+)$/ ) {
-	$final_seq = $1;
-}
-
-elsif ( length ( $sequence ) == 0 ) {
-	$final_seq = "Seka nepateikta!";
-}
-
+if ( $sequence =~ /^([ACGTacgt]+)$/ ) { $final_seq = $1; }
+elsif ( length ( $sequence ) == 0 ) { $final_seq = "Seka nepateikta!"; }
 elsif ( $sequence !~ /^([ACGTacgt]+)$/ ) {
 	$final_seq = "Aptikta neteisingų simbolių!";
 }
