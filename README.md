@@ -8,3 +8,8 @@ of the sequences (e.g. predicting secondary structure and etc.), and provide bio
 **Directory descriptions:**
 
 - **CSS/**
+- **Errors/**
+- **GOR/**
+- **HTML_files/**
+- **Images/**
+- **cgi-bin/**
