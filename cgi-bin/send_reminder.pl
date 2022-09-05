@@ -34,7 +34,6 @@ if ( param( 'vardas' ) =~ /^([A-Za-zĄČĘĖĮŠŲŪąčęėįšųū]+)$/ ) {
 }
 
 else {
-	
 	print redirect(
 		-uri => 'http://localhost/BIAP/Klaidos/missing_name.html'
 	);
@@ -61,7 +60,6 @@ else {
 		-uri => 'http://localhost/BIAP/Klaidos/missing_email.html'
 	);
 	exit;
-	
 }
 
 print
