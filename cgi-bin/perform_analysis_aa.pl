@@ -10,28 +10,22 @@ my $unfiltered_seq;
 my $each_aa_count;
 
 sub find_length ( $@ ) {
-	
 	my $seq = shift ( @_ );
 	my $seq_length;
 	
-	if ( $seq eq "Seka nepateikta!" ) {
-		$seq_length = $seq;
-	}
-	
+	if ( $seq eq "Seka nepateikta!" ) { $seq_length = $seq;
+
 	elsif ( $seq !~ /^([ACDEFGHIKLMNPQRSTVWYacdefghiklmnpqrstvwy]+)$/ ) {
 		$seq_length = "Negalima apskaičiuoti!";
 	}
-	
+
 	else {	$seq_length = length( $seq ); }
 	
 	return $seq_length;
-	
 }
 
 sub count_mass ( $@ ) {
-	
 	my $seq = shift ( @_ );
-
 	my %aa_masses = ( 
 		'A' => 89.1, 'R' => 174.2, 'N' => 132.1, 'D' => 133.1,
 		'C' => 121.2, 'E' => 147.1, 'Q' => 146.2, 'G' => 75.1,
@@ -39,21 +33,17 @@ sub count_mass ( $@ ) {
 		'M' => 149.2, 'F' => 165.2, 'P' => 115.1, 'S' => 105.1,
 		'T' => 119.1, 'W' => 204.2, 'Y' => 181.2, 'V' => 117.1
 	);
-	
 	my $seq_total_mass = 0;
 	
 	$seq = uc ( $seq );
 	
 	if ( $seq =~ /^([ACDEFGHIKLMNPQRSTVWY]+)$/ ) {	
-	
 		my @split_seq = split( '', $seq );
 
 		for ( my $at = 0; $at < scalar @split_seq; $at++ ) {
-	
 			my $aa_mass = $aa_masses{ $split_seq[ $at ] };
 			$seq_total_mass = $seq_total_mass + $aa_mass . " g/mol";	
 		}
-	
 	}
 	
 	elsif ( $seq eq "Seka nepateikta!" || $seq !~ /^([ACDEFGHIKLMNPQRSTVWY]+)$/ ) {
@@ -61,67 +51,51 @@ sub count_mass ( $@ ) {
 	}
 	
 	return $seq_total_mass;
-
 }
 
 sub open_GOR_C {
-
 	my @GOR_C_array = ();
 	open ( my $GOR_C, '<', '/var/www/html/BIAP/GOR/GOR_C.tab' );
 	
-	while ( my $file_line = <$GOR_C> ) {
-		push ( @GOR_C_array, $file_line );
-	}
+	while ( my $file_line = <$GOR_C> ) { push ( @GOR_C_array, $file_line ); }
 
 	#print @GOR_C_array;
 	#print scalar @GOR_C_array;
 
 	close ( $GOR_C );
 	return @GOR_C_array;
-
 }
 
 sub open_GOR_H {
-
 	my @GOR_H_array = ();
 	open ( my $GOR_H, '<', '/var/www/html/BIAP/GOR/GOR_H.tab' );
 
-	while ( my $file_line = <$GOR_H> ) {
-		push ( @GOR_H_array, $file_line );
-	}
+	while ( my $file_line = <$GOR_H> ) { push ( @GOR_H_array, $file_line ); }
 
 	#print @GOR_H_array;
 	#print scalar @GOR_H_array;
 
 	close ( $GOR_H );
 	return @GOR_H_array;
-
 }
 
 sub open_GOR_E {
-
 	my @GOR_E_array = ();
 	open ( my $GOR_E, '<', '/var/www/html/BIAP/GOR/GOR_E.tab' );
 
-	while ( my $file_line = <$GOR_E> ) {
-		push ( @GOR_E_array, $file_line );
-	}
+	while ( my $file_line = <$GOR_E> ) { push ( @GOR_E_array, $file_line ); }
 
 	#print @GOR_E_array;
 	#print scalar @GOR_E_array;
 	
 	close ( $GOR_E );
 	return @GOR_E_array;
-
 }
 
 # Subroutine that cuts sequence into 17-nt long fragments:
-
 sub perform_sequence_cut ( $$ ) {
-
 	my @fragment_array = ();
 	my $cut_at = 0;
-
 	my $sequence = shift @_;
 	$cut_at = shift @_;
 
@@ -131,22 +105,16 @@ sub perform_sequence_cut ( $$ ) {
 	#print @split_fragment, "\n";
 	
 	if ( scalar @split_fragment == 17 ) {
-
 		push @fragment_array, $fragment;
 		return @fragment_array;
-
 	}
-	
 }
 
 # Subroutine that determines which GOR file to open ( C, E, H ) and
 # finds amino acid GOR values based on amino acid position in fragments:
-
 sub determine_GOR_values {
-
 	my @values = ();
 	my @GOR_table = ();
-
 	my @fragments_array = shift @_;
 	my $GOR_letter = shift @_;
 
@@ -167,11 +135,9 @@ sub determine_GOR_values {
 			else {
 
 				for ( my $at_3f = 0; $at_3f < scalar @GOR_table; $at_3f++ ) {
-
 					my @aminoAcid = split ( ' ', $GOR_table[ $at_3f ] );
 
 					if ( $split_fragment[ $at_2f ] eq $aminoAcid[ 1 ] ) {
-	
 						my $position = $at_2f + 2;
 						push ( @values, $aminoAcid[ $position ] );
 					}
@@ -185,38 +151,28 @@ sub determine_GOR_values {
 
 	#print "@values\n";
 	return @values;
-
 }
 
 # Subroutine that returns the sum of the GOR values:
-
 sub count_GOR_value ( $ ) {
-
 	my $sum_of_values = 0;
-
 	my $joint_values = shift @_;
 	my @values_array = split ( ' ', $joint_values );
 
 	#print "@values_array\n";
 
 	for my $iter( 0..$#values_array ) {
-
 		my $value = $values_array[ $iter ];
 		$sum_of_values = $sum_of_values + $value;
-
 	}
 
 	#print $sum_of_values, "\n";
 	return $sum_of_values;
-
 }
 
 # Subroutine that determines the highest GOR value:
-
 sub find_highest_GOR_value ( @ ) {
-
 	my @CEH_values = @_;
-
 	my @sorted_CEH = sort { $a <=> $b } @CEH_values;
 	
 	#print "@sorted_CEH\n";
@@ -226,25 +182,19 @@ sub find_highest_GOR_value ( @ ) {
 	if ( $last_value == $CEH_values[ 0 ] ) { return "C"; }
 	elsif ( $last_value == $CEH_values[ 1 ] ) { return "E"; }
 	elsif ( $last_value == $CEH_values[ 2 ] ) { return "H"; }
-
 }
 
 # Subroutine that returns highest values:
-
 sub return_highest_values ( $ ) {
-
 	my $symbol = shift @_;
 
 	if ( $symbol eq "C" ) { return "C"; }
 	elsif ( $symbol eq "E" ) { return "E"; }
 	elsif ( $symbol eq "H" ) { return "H"; }
-
 }
 
 # Subroutine that implements filter:
-
 sub implement_filter ( $ ) {
-
 	my @symbol_after_filter = ();
 	my $C_count = 0;
 	my $E_count = 0;
@@ -256,11 +206,9 @@ sub implement_filter ( $ ) {
 	#print $fragment, "\n";
 
 	for ( my $at_1f = 0; $at_1f < scalar @split_fragment; $at_1f++ ) {
-
 		if ( $split_fragment[ $at_1f ] eq 'C' ) { $C_count = $C_count + 1; }
 		elsif ( $split_fragment[ $at_1f ] eq 'E' ) { $E_count = $E_count + 1; }
 		elsif ( $split_fragment[ $at_1f ] eq 'H' ) { $H_count = $H_count + 1; }
-
 	}
 
 	#print "C: ", $C_count, "\t";
@@ -268,46 +216,37 @@ sub implement_filter ( $ ) {
 	#print "H: ", $H_count, "\n";
 
 	for ( my $at_2f = 0; $at_2f < scalar @split_fragment; $at_2f++ ) {
-
 		if ( $C_count > $E_count && $C_count > $H_count) {
-
 			$split_fragment[ $at_2f ] = 'C';
 			push ( @symbol_after_filter, $split_fragment[ $at_2f ] );
-
 		}
-		elsif ( $E_count > $C_count && $E_count > $H_count) { 
 
+		elsif ( $E_count > $C_count && $E_count > $H_count) { 
 			$split_fragment[ $at_2f ] = 'E';
 			push ( @symbol_after_filter, $split_fragment[ $at_2f ] );
-
 		}
-		elsif ( $H_count > $C_count && $H_count > $E_count) { 
 
+		elsif ( $H_count > $C_count && $H_count > $E_count) { 
 			$split_fragment[ $at_2f ] = 'H';
 			push ( @symbol_after_filter, $split_fragment[ $at_2f ] );
-
 		}
+
 		else { 
 			my $position = $at_2f + 1;
 			push ( @symbol_after_filter, $split_fragment[ $position ] );
 		}
-
 	}
 
 	#print $symbol_after_filter[ 0 ], "\n";
 	return $symbol_after_filter[ 0 ];
-
 }
 
 # Subroutine that returns filtered sequence:
-
 sub pass_through_filter ( $$ ) {
-
 	my @filtered_sequence = ();
 	my @split_CEH_values = ();
 	my $cut_CEH_fragment;
 	my $filtered_symbol;
-
 	my $sequence = shift @_;
 	my $CEH_values = shift @_;
 
@@ -321,27 +260,22 @@ sub pass_through_filter ( $$ ) {
 	my $limit_pos = scalar @split_seq - 10;
 
 	for ( my $at = 7; $at < scalar @split_CEH_values; $at++ ) {
-
 		if ( $at == $limit_pos ) {
-
 			$cut_CEH_fragment = substr ( $CEH_values, $at, 3 );
 			#print $cut_CEH_fragment,"\n";
 
 			$filtered_symbol = implement_filter ( $cut_CEH_fragment );
 			push ( @filtered_sequence, $filtered_symbol );
 			last;
-
 		}
 
 		else {
-
 			$cut_CEH_fragment = substr ( $CEH_values, $at, 3 );
 			#print $cut_CEH_fragment,"\n";
 
 			$filtered_symbol = implement_filter ( $cut_CEH_fragment );
 			push ( @filtered_sequence, $filtered_symbol );
 			next;
-
 		}
 	}
 
@@ -349,13 +283,10 @@ sub pass_through_filter ( $$ ) {
 	my $jnt_filtered_seq = join ( '', @filtered_sequence );
 	
 	return $jnt_filtered_seq;
-
 }
 
 # Subroutine that determines protein class:
-
 sub determine_protein_class ( $ ) {
-
 	my $flt_seq = shift @_;
 	#print $flt_seq, "\n";
 
@@ -374,7 +305,9 @@ sub determine_protein_class ( $ ) {
 	#print @H_count,"\n";
 	#print @E_count,"\n";
 
-	if ( scalar @C_count == scalar @split_seq_no_signs ) { return "Negalima nuspėti!"; }
+	if ( scalar @C_count == scalar @split_seq_no_signs ) {
+		return "Negalima nuspėti!";
+	}
 	elsif ( ( $flt_seq !~ /E/ && $flt_seq =~ /H/ ) || 
 			scalar @H_count == scalar @split_seq_no_signs ) { return "α"; }
 	elsif ( ( $flt_seq !~ /H/ && $flt_seq =~ /E/ ) || 
@@ -382,13 +315,10 @@ sub determine_protein_class ( $ ) {
 	elsif ( $flt_seq =~ /E{1,}C{0,}H{1,}C{0,}E{1,}/ || 
 				$flt_seq =~ /H{1,}C{0,}E{1,}C{0,}H{1,}/ ) { return "α/β"; }
 	else { return "α+β"; }
-
 }
 
 # Subroutine that calls other subroutines to perform sequence modifications:
-
 sub make_CEH_sequences ( $ ) {
-
 	my @cut_sequences = ();
 	my @counted_GOR_values = ();
 	my @sequence_with_signs = ();
@@ -398,7 +328,6 @@ sub make_CEH_sequences ( $ ) {
 	my @split_seq = split ( '', $sequence );
 
 	for ( my $at = 0; $at < scalar @split_seq; $at++ ) {
-
 		@cut_sequences = perform_sequence_cut( $sequence, $start );
 
 		my @C_values = determine_GOR_values( @cut_sequences, 'C' );
@@ -425,7 +354,6 @@ sub make_CEH_sequences ( $ ) {
 
 		$start = $start + 1;
 		@counted_GOR_values = ();
-
 	}
 
 	unshift ( @sequence_with_signs, ( '?' )x8 );
@@ -439,24 +367,18 @@ sub make_CEH_sequences ( $ ) {
 	my $complete_CEH_seq = join ( '', @split_CEH_seq );
 
 	return $complete_CEH_seq;
-	
 }
 
 # Subroutine that prints results:
-
 sub print_results ( $ ) {
-
 	my $sequence = shift @_;
+	my $unfiltered_CEH_seq = make_CEH_sequences ( $sequence );
 
-	my $unfiltered_CEH_seq = make_CEH_sequences ( $sequence );	
 	return $unfiltered_CEH_seq;
-
 }
 
 sub determine_aa_frequency ( $ ) {
-	
 	my $sequence = shift @_;
-	
 	my %aa_names = ( 
 		'A' => "Alaninas", 'R' => "Argininas", 'N' => "Asparaginas",
 		'D' => "Aspartatas", 'C' => "Cisteinas", 'E' => "Glutamatas",
@@ -474,20 +396,15 @@ sub determine_aa_frequency ( $ ) {
 	
 	my @split_sequence = split ( '', $sequence );
 	
-	foreach my $iter ( @split_sequence ) { 
-		$aa_frequencies{ $iter }++;
-	}
+	foreach my $iter ( @split_sequence ) { $aa_frequencies{ $iter }++; }
 	
 	my @hash_keys = keys %aa_frequencies;
 	
 	if ( scalar @hash_keys < 5 ) {
-		
 		$aa_freq_jnt = "Seką sudaro mažiau nei 5 skirtingos aminorūgštys!"
-		
 	}
 	
 	else {
-
 		foreach my $acid( sort { $aa_frequencies{ $a } <=>
 				$aa_frequencies{ $b } } keys %aa_frequencies) {
 			my $concat = $aa_names{ $acid } . " ($acid) =" . 
@@ -497,12 +414,10 @@ sub determine_aa_frequency ( $ ) {
 	
 		@aa_freq_arr = reverse ( @aa_freq_arr );
 		my @most_frequent = @aa_freq_arr [ 0..4 ];
-	
 		$aa_freq_jnt = join ( ', ', @most_frequent );
 	}
 	
 	return $aa_freq_jnt;
-	
 }
 
 if ( $sequence =~ /^([ACDEFGHIKLMNPQRSTVWYacdefghiklmnpqrstvwy]+)$/ ) {
@@ -511,7 +426,8 @@ if ( $sequence =~ /^([ACDEFGHIKLMNPQRSTVWYacdefghiklmnpqrstvwy]+)$/ ) {
 	$each_aa_count = determine_aa_frequency ( $final_seq ); 
 }
 
-elsif ( $sequence !~ /^([ACDEFGHIKLMNPQRSTVWYacdefghiklmnpqrstvwy]+)$/ && length ( $sequence ) != 0 ) {
+elsif ( $sequence !~ /^([ACDEFGHIKLMNPQRSTVWYacdefghiklmnpqrstvwy]+)$/ 
+				&& length ( $sequence ) != 0 ) {
 	$final_seq = "Aptikta neteisingų simbolių!";
 	$unfiltered_seq = "Negalima nustatyti!";
 	$each_aa_count = "Negalima nustatyti!";
