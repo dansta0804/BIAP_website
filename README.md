@@ -14,4 +14,4 @@ of the sequences (e.g. predicting secondary structure and etc.), and provide bio
 - **Images/** - stores images that are used in different *.html* files;
 - **cgi-bin/** - stores Perl scripts that analyze form input and return particular content based on the information provided.
 
-The website can be viewed [here](link).
+The website can be viewed [here](https://karklas.mif.vu.lt/~dast6577/BIAP/HTML%20failai/tinklalapis.html).
